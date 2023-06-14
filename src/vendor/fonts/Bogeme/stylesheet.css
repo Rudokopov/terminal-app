@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'England Hand DB';
+    src: url('EnglandHandDB.eot');
+    src: local('England Hand DB'), local('EnglandHandDB'),
+        url('EnglandHandDB.eot?#iefix') format('embedded-opentype'),
+        url('EnglandHandDB.woff2') format('woff2'),
+        url('EnglandHandDB.woff') format('woff'),
+        url('EnglandHandDB.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

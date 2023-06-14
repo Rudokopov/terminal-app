@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import styles from "./App.module.scss";
+import Header from "./Header";
+import Provider from "./Provider";
+import { Route, Routes } from "react-router-dom";
+import PayWindow from "./PayWindow";
+import { BogemeContext } from "../context/BogemeContext";
 
-function App() {
+const App = () => {
+  const [isBogeme, setBogeme] = useState(false);
+
+  const handleClickBogeme = () => {
+    setBogeme(!isBogeme);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className={`${styles.container} ${
+        isBogeme ? styles.bogemeContainer : ""
+      }`}
+    >
+      <BogemeContext.Provider value={{ isBogeme, setBogeme }}>
+        <Header handleClickBogeme={handleClickBogeme} />
+
+        <Routes>
+          <Route path="/" element={<Provider />} />
+          <Route path="/pay/:id" element={<PayWindow />} />
+        </Routes>
+      </BogemeContext.Provider>
     </div>
   );
-}
+};
 
 export default App;
